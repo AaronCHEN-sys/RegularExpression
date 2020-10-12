@@ -15,7 +15,7 @@ public class test {
      */
     @Test
     public void test1() {
-        String phone = "12312345";
+        String phone = "12345678910";
         /**
          * 手机号码规则
          * 1.长度为11位, 全部是纯数字
