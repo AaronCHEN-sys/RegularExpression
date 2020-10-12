@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>QQ信息的注册</title>
+</head>
+<body>
+	<center>
+		<form id="form1" action="http://111.13.100.91/" method="post">
+			<table border="1px" width="600px">
+				<tr>
+					<td>昵称：</td>
+					<td><input type="text" name="nick" pattern=".{4,10}" required placeholder="请输入4-10的字符"></td>
+				</tr>
+				<tr>
+					<td>密码：</td>
+					<td><input type="password" name="pwd" pattern=".{6,16}" required placeholder="请输入6-16位字符"></td>
+				</tr>
+				<tr>
+					<td>手机号：</td>
+					<td><input type="text" name="phone" pattern="1[35789]\d{9}" required placeholder="请输入正确的手机号码"></td>
+				</tr>
+				<tr>
+					<td>邮箱：</td>
+					<td><input type="email" name="email" required placeholder="请输入正确的邮箱格式"></td>
+				</tr>
+				<tr>
+					<td>年龄：</td>
+					<td><input type="text" name="age" placeholder="请输入一个正数"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="注册"></td>
+					<td><input type="reset" value="重置"></td>
+				</tr>
+			</table>
+		</form>
+	</center>
+</body>
+</html>
