@@ -59,7 +59,27 @@ public class test {
          * 2.第2位是3/5/7/8/9
          */
         String phone = "18227680217";
-        String regex = "[1][35789][0-9]{9}";
+        String regex = "[1][35789]\\d{9}";
+        boolean flag = phone.matches(regex);
+        System.out.println(flag ? "手机号码格式完全正确！" : "手机号码格式不正确!");
+    }
+
+    /**
+     * 正则表达式常用匹配规则
+     */
+    @Test
+    public void test3() {
+        /**
+         * [0-9]: 纯数字, 等价于\d
+         * \w: 单词字符, 等价于[0-9a-zA-Z]
+         * .: 代表任意字符
+         * 量词: 指定某个整体出现的数量
+         * X{n}: X, 恰好出现n次
+         * X{n,}: X, 至少出现n次
+         * X{n,m}: X, 至少出现n次, 但是不超过m次
+         */
+        String phone = "18227680217";
+        String regex = "[1][35789]\\d{9}";
         boolean flag = phone.matches(regex);
         System.out.println(flag ? "手机号码格式完全正确！" : "手机号码格式不正确!");
 
