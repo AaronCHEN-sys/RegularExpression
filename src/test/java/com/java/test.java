@@ -93,4 +93,14 @@ public class test {
         }
     }
 
+    /**
+     * 字符串的替换
+     */
+    @Test
+    public void test5() {
+        String comment = "联系电话:13541183398";
+        String newComment = comment.replaceAll("1[35789]\\d{9}", "18227680217");
+        System.out.println(newComment);
+    }
+
 }
