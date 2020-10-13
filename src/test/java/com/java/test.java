@@ -48,4 +48,21 @@ public class test {
         }
     }
 
+    /**
+     * 正则表达式验证手机号
+     */
+    @Test
+    public void test2() {
+        /**
+         * 手机号码规则
+         * 1.长度为11位, 全部是纯数字
+         * 2.第2位是3/5/7/8/9
+         */
+        String phone = "18227680217";
+        String regex = "[1][35789][0-9]{9}";
+        boolean flag = phone.matches(regex);
+        System.out.println(flag ? "手机号码格式完全正确！" : "手机号码格式不正确!");
+
+    }
+
 }
