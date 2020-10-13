@@ -103,4 +103,17 @@ public class test {
         System.out.println(newComment);
     }
 
+    /**
+     * 字符串的替换之去掉叠词
+     */
+    @Test
+    public void test6() {
+        String comment = "联系电话:13541183398";
+        //叠词规则: 多个字符挨在一起, 并且字符相同
+        //使用(模块): 形成一个组, 组有组编号
+        String regex = "(.)\\1+";
+        String newComment = comment.replaceAll(regex, "$1");
+        System.out.println(newComment);
+    }
+
 }
