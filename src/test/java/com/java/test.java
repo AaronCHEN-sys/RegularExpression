@@ -78,11 +78,19 @@ public class test {
          * X{n,}: X, 至少出现n次
          * X{n,m}: X, 至少出现n次, 但是不超过m次
          */
-        String phone = "18227680217";
-        String regex = "[1][35789]\\d{9}";
-        boolean flag = phone.matches(regex);
-        System.out.println(flag ? "手机号码格式完全正确！" : "手机号码格式不正确!");
+    }
 
+    /**
+     * 字符串的切割
+     */
+    @Test
+    public void test4() {
+        String nameString = "Aaron.Lucien.Evelyn.Bob";
+        //切割的时候, 建议在正则符号前添加"\\"
+        String[] strings = nameString.split("\\.");
+        for (String string : strings) {
+            System.out.println(string);
+        }
     }
 
 }
