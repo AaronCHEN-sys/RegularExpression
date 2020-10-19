@@ -2,6 +2,11 @@ package com.java;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
 /**
  * Description:	   <br/>
  * Date:     2020/10/12 11:13 <br/>
@@ -114,6 +119,75 @@ public class test {
         String regex = "(.)\\1+";
         String newComment = comment.replaceAll(regex, "$1");
         System.out.println(newComment);
+    }
+
+    /**
+     * 作业1讲解
+     */
+    @Test
+    public void test7() {
+        String string = "许立成：我...我我...我...喜喜...喜...喜.喜.....欢欢...欢...编...编编...程程...程程";
+        //1.使用替换: 将"."替换成""
+        String string1 = string.replaceAll("\\.+", "");
+        //2.去叠词
+        String string2 = string1.replaceAll("(.)\\1+", "$1");
+        System.out.println(string2);
+    }
+
+    /**
+     * 作业2讲解
+     */
+    @Test
+    public void test8() {
+        /**
+         * 模块1@模块2模块3
+         * 模块1: 可以为数字、字母、下划线、长度3-12位
+         * 模块2: 要么纯数字、要么纯字母、长度2-6位
+         * 模块3: .com, 可以出现的次数为1-3
+         */
+        String email = "Aaron.chen07@outlook.com";
+
+        String regex1 = "[0-9a-zA-z.]{3,12}@[a-zA-Z]{2,7}(\\.[a-zA-Z]{2,3}){1,3}";
+        String regex2 = "[0-9a-zA-z.]{3,12}(\\.[a-zA-Z]{2,3}){1,3}";
+
+        String regex = "[0-9a-zA-z.]{3,12}@([a-zA-Z]{2,7}|@\\d{2,7})(\\.[a-zA-Z]{2,3}){1,3}";
+
+        boolean flag1 = email.matches(regex1) || email.matches(regex2);
+        boolean flag2 = email.matches(regex);
+
+        System.out.println(flag1 ? "格式正确!" : "格式不正确!");
+        System.out.println(flag2 ? "格式正确!" : "格式不正确!");
+    }
+
+    /**
+     * 正则拔高
+     * IP地址: A.B.C.D
+     * A-D的取值范围是1~255
+     * 对IP地址归类
+     * 102.254.38.12
+     * 11.12.122.25
+     * 123.123.45.12
+     * 1.12.122.25
+     */
+    @Test
+    public void test9() {
+        String ipStrings = "102.254.38.12,11.12.122.25,123.123.45.12,1.12.122.25";
+        //0.将每个IP地址中的位数前添加两个0
+        ipStrings = ipStrings.replaceAll("(\\d{1,3})", "00$1");
+        ipStrings = ipStrings.replaceAll("0+(\\d{3})", "$1");
+        //1.切割
+        String[] split = ipStrings.split("\\,");
+        //2.创建HashSet集合，存放字符串
+        Set<String> ipSet = new TreeSet<>();
+        for (String s : split) {
+            ipSet.add(s);
+        }
+        List<String> ipList = new ArrayList<>();
+        for (String s : ipSet) {
+            String temp = s.replaceAll("0*([1-9]{1,3})", "$1");
+            ipList.add(temp);
+        }
+        ipList.forEach(ip -> System.out.println(ip));
     }
 
 }
