@@ -2,10 +2,9 @@ package com.java;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Description:	   <br/>
@@ -190,4 +189,52 @@ public class test {
         ipList.forEach(ip -> System.out.println(ip));
     }
 
+    /**
+     * 校验身份证：
+     * 1.长度为18位
+     * 2.前面17位必须为纯数字
+     * 3.最后一位可以为X，也可以为数字
+     * 4.不用校验出生日期等
+     */
+    @Test
+    public void test10() throws ParseException {
+        String regex = "\\d{17}[0-9X]";
+        String id = "510184202010205573";
+        /**
+         * 校验身份证出生日期
+         * 1.出生日期不能大于当前日期
+         * 2.年份不能太大
+         */
+        long currentTime = System.currentTimeMillis();
+        String substring = id.substring(6, 14);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Date parse = sdf.parse(substring);
+        long time = parse.getTime();
+        long cha = currentTime - time;
+        boolean flag = id.matches(regex);
+        if (flag) {
+            if (cha < 0) {
+                System.out.println("出生日期不正确!");
+            } else {
+                System.out.println("格式正确!");
+            }
+        } else {
+            System.out.println("格式不正确!");
+        }
+    }
+
+    /**
+     * 校验QQ号码：
+     * 1.长度为5-12位
+     * 2.必须为纯数字
+     * 3.第一个数字不能够为0
+     */
+    @Test
+    public void test11() {
+        String qq = "1070791642";
+        String regex = "[1-9]\\d{4,11}";
+        boolean flag = qq.matches(regex);
+        System.out.println(flag ? "格式正确!" : "格式不正确!");
+    }
 }
+
